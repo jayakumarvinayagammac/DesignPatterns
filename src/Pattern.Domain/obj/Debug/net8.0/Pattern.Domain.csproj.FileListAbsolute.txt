@@ -1,0 +1,12 @@
+G:\development\DesignPatterns\src\Pattern.Domain\bin\Debug\net8.0\Pattern.Domain.deps.json
+G:\development\DesignPatterns\src\Pattern.Domain\bin\Debug\net8.0\Pattern.Domain.dll
+G:\development\DesignPatterns\src\Pattern.Domain\bin\Debug\net8.0\Pattern.Domain.pdb
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.GeneratedMSBuildEditorConfig.editorconfig
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.AssemblyInfoInputs.cache
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.AssemblyInfo.cs
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.csproj.CoreCompileInputs.cache
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.dll
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\refint\Pattern.Domain.dll
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.pdb
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\ref\Pattern.Domain.dll
+G:\development\DesignPatterns\src\Pattern.Domain\obj\Debug\net8.0\Pattern.Domain.csproj.AssemblyReference.cache

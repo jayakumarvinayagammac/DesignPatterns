@@ -1,0 +1,6 @@
+@Pattern.Presentation.API_HostAddress = http://localhost:5234
+
+GET {{Pattern.Presentation.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
