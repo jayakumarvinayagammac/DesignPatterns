@@ -1,12 +1,17 @@
 # Sample Markdown File
 
 ## Introduction
-This is a sample Markdown file. Markdown is a lightweight markup language for creating formatted text using a plain-text editor.
+Design patterns are reusable solutions to common software design problems. They serve as blueprints for solving specific issues in object-oriented design and are widely used to make code more flexible, modular, and maintainable. The concept was popularized by the "Gang of Four" (GoF) book "Design Patterns: Elements of Reusable Object-Oriented Software."
 
 ## Features
-- Easy to write and read
-- Supports headings, lists, links, and more
-- Widely used for documentation
+Design patterns are generally categorized into three types:
+
+- Creational Patterns: Focus on object creation mechanisms.
+    Examples: Singleton, Factory Method, Abstract Factory, Builder, Prototype.
+- Structural Patterns: Deal with the composition of objects or classes.
+    Examples: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.
+- Behavioral Patterns: Focus on communication between objects and how responsibilities are distributed.
+    Examples: Observer, Strategy, Command, Chain of Responsibility, Template Method, Mediator.
 
 ## Example Code
 PS G:\development>DesignPatterns

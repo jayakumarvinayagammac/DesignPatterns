@@ -29,6 +29,8 @@ namespace Pattern.Presentation.API.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CreateShipment([FromBody] CreateShipmentDto shipment)
         {
             // Placeholder for creating a new shipment
