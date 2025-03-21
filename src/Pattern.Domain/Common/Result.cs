@@ -24,27 +24,4 @@ namespace Pattern.Domain.Common
 
         public static Result Failure(Error error) => new(false, error);
     }
-
-    public static class FollowerErrors
-    {
-        public static readonly Error SameUser = new Error(
-            "Followers.SameUser", "Can't follow yourself");
-
-        public static readonly Error NonPublicProfile = new Error(
-            "Followers.NonPublicProfile", "Can't follow non-public profiles");
-
-        public static readonly Error AlreadyFollowing = new Error(
-            "Followers.AlreadyFollowing", "Already following");
-    }
-
-    public static class ResultExtensions
-    {
-        public static T Match<T>(
-            this Result result,
-            Func<T> onSuccess,
-            Func<Error, T> onFailure)
-        {
-            return result.IsSuccess ? onSuccess() : onFailure(result.Error);
-        }
-    }
 }

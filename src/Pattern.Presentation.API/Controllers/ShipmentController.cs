@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Pattern.Application.Shipment.Commands;
 using MediatR;
+using Pattern.Domain.Common.Extensions;
 namespace Pattern.Presentation.API.Controllers
 {
     [ApiController]
@@ -31,11 +32,15 @@ namespace Pattern.Presentation.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult CreateShipment([FromBody] CreateShipmentDto shipment)
+        public async Task<IActionResult> CreateShipment([FromBody] CreateShipmentDto shipment)
         {
             // Placeholder for creating a new shipment
-            var result = _mediator.Send(new CreateShipmentCommand(shipment));
-            return Ok(result);
+            var result = await _mediator.Send(new CreateShipmentCommand(shipment));
+            return result.Match<IActionResult>(
+                () => Ok(new { Message = "Shipment created" }),
+                error => BadRequest(new { error.Code, error.Description })
+            );
+            
         }
 
         [HttpPut("{id}")]

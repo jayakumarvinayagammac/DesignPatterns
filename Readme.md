@@ -108,3 +108,196 @@ INSERT INTO OrderDetails (OrderId, ProductId, Quantity, UnitPrice)
 VALUES 
 (1, 1, 1, 1200.00), -- 1 Laptop
 (1, 3, 1, 150.00);  -- 1 Headphones
+
+
+PS G:\development\DesignPatterns\src\Pattern.Infrastructure> dotnet tool install --global dotnet-ef
+You can invoke the tool using the following command: dotnet-ef
+Tool 'dotnet-ef' (version '9.0.3') was successfully installed.
+
+PS G:\development\DesignPatterns\src\Pattern.Infrastructure> dotnet add  package Microsoft.EntityFrameworkCore.Design                      
+PS G:\development\DesignPatterns\src\Pattern.Presentation.API> dotnet add  package 
+PS G:\development\DesignPatterns\src> cd .\Pattern.Infrastructure\
+PS G:\development\DesignPatterns\src\Pattern.Infrastructure> dotnet ef migrations add InitialCreate --startup-project ..\Pattern.Presentation.API\
+Build started...
+Build succeeded.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderDetail'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+Done. To undo this action, use 'ef migrations remove'
+
+PS G:\development\DesignPatterns\src\Pattern.Infrastructure> dotnet ef database update --startup-project ..\Pattern.Presentation.API\
+Build started...
+Build succeeded.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'TotalAmount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'UnitPrice' on entity type 'OrderDetail'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (159ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+      CREATE DATABASE [ecommerce];
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (47ms) [Parameters=[], CommandType='Text', CommandTimeout='60']
+      IF SERVERPROPERTY('EngineEdition') <> 5
+      BEGIN
+          ALTER DATABASE [ecommerce] SET READ_COMMITTED_SNAPSHOT ON;
+      END;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+info: Microsoft.EntityFrameworkCore.Migrations[20411]
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DECLARE @result int;
+      EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+      SELECT @result
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+      BEGIN
+          CREATE TABLE [__EFMigrationsHistory] (
+              [MigrationId] nvarchar(150) NOT NULL,
+              [ProductVersion] nvarchar(32) NOT NULL,
+              CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+          );
+      END;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [MigrationId], [ProductVersion]
+      FROM [__EFMigrationsHistory]
+      ORDER BY [MigrationId];
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20250321183542_InitialCreate'.
+Applying migration '20250321183542_InitialCreate'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [Products] (
+          [ProductId] int NOT NULL IDENTITY,
+          [Name] nvarchar(max) NULL,
+          [Description] nvarchar(max) NULL,
+          [Price] decimal(18,2) NOT NULL,
+          [Stock] int NOT NULL,
+          [CreatedAt] datetime2 NOT NULL,
+          CONSTRAINT [PK_Products] PRIMARY KEY ([ProductId])
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [Users] (
+          [UserId] int NOT NULL IDENTITY,
+          [FirstName] nvarchar(max) NULL,
+          [LastName] nvarchar(max) NULL,
+          [Email] nvarchar(max) NULL,
+          [PasswordHash] nvarchar(max) NULL,
+          [CreatedAt] datetime2 NOT NULL,
+          CONSTRAINT [PK_Users] PRIMARY KEY ([UserId])
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [Orders] (
+          [OrderId] int NOT NULL IDENTITY,
+          [UserId] int NOT NULL,
+          [OrderDate] datetime2 NOT NULL,
+          [TotalAmount] decimal(18,2) NOT NULL,
+          CONSTRAINT [PK_Orders] PRIMARY KEY ([OrderId]),
+          CONSTRAINT [FK_Orders_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([UserId]) ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [OrderDetails] (
+          [OrderDetailId] int NOT NULL IDENTITY,
+          [OrderId] int NOT NULL,
+          [ProductId] int NOT NULL,
+          [Quantity] int NOT NULL,
+          [UnitPrice] decimal(18,2) NOT NULL,
+          CONSTRAINT [PK_OrderDetails] PRIMARY KEY ([OrderDetailId]),
+          CONSTRAINT [FK_OrderDetails_Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [Orders] ([OrderId]) ON DELETE CASCADE,
+          CONSTRAINT [FK_OrderDetails_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [Shipments] (
+          [ShipmentId] int NOT NULL IDENTITY,
+          [OrderId] int NOT NULL,
+          [ShipmentDate] datetime2 NOT NULL,
+          [Status] nvarchar(max) NULL,
+          [TrackingNumber] nvarchar(max) NULL,
+          [Carrier] nvarchar(max) NULL,
+          CONSTRAINT [PK_Shipments] PRIMARY KEY ([ShipmentId]),
+          CONSTRAINT [FK_Shipments_Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [Orders] ([OrderId]) ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE [ShipmentDetails] (
+          [ShipmentDetailId] int NOT NULL IDENTITY,
+          [ShipmentId] int NOT NULL,
+          [ProductId] int NOT NULL,
+          [Quantity] int NOT NULL,
+          CONSTRAINT [PK_ShipmentDetails] PRIMARY KEY ([ShipmentDetailId]),
+          CONSTRAINT [FK_ShipmentDetails_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([ProductId]) ON DELETE CASCADE,
+          CONSTRAINT [FK_ShipmentDetails_Shipments_ShipmentId] FOREIGN KEY ([ShipmentId]) REFERENCES [Shipments] ([ShipmentId]) ON DELETE CASCADE
+      );
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX [IX_OrderDetails_OrderId] ON [OrderDetails] ([OrderId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX [IX_OrderDetails_ProductId] ON [OrderDetails] ([ProductId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX [IX_Orders_UserId] ON [Orders] ([UserId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX [IX_ShipmentDetails_ProductId] ON [ShipmentDetails] ([ProductId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX [IX_ShipmentDetails_ShipmentId] ON [ShipmentDetails] ([ShipmentId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE UNIQUE INDEX [IX_Shipments_OrderId] ON [Shipments] ([OrderId]);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+      VALUES (N'20250321183542_InitialCreate', N'9.0.3');
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      DECLARE @result int;
+      EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+      SELECT @result
+Done.
+
+-- Insert sample users
+INSERT INTO Users (FirstName, LastName, Email, PasswordHash, CreatedAt)
+VALUES 
+('John', 'Doe', 'john.doe@example.com', 'hashedpassword1', GETDATE()),
+('Jane', 'Smith', 'jane.smith@example.com', 'hashedpassword2', GETDATE());
+
+-- Insert sample products
+INSERT INTO Products (Name, Description, Price, Stock, CreatedAt)
+VALUES 
+('Laptop', 'High-performance laptop', 1200.00, 10, GETDATE()),
+('Smartphone', 'Latest model smartphone', 800.00, 20, GETDATE()),
+('Headphones', 'Noise-cancelling headphones', 150.00, 50, GETDATE());
+
+-- Insert a sample order
+select * from Users
+INSERT INTO Orders (UserId, TotalAmount,OrderDate)
+VALUES (2, 1350.00, GETDATE());
+
+-- Insert sample order details
+select * from Orders
+INSERT INTO OrderDetails (OrderId, ProductId, Quantity, UnitPrice)
+VALUES 
+(3, 1, 1, 1200.00), -- 1 Laptop
+(3, 3, 1, 150.00);  -- 1 Headphones
