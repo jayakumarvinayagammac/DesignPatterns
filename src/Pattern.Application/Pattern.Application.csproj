@@ -2,9 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pattern.Domain\Pattern.Domain.csproj" />
+    <ProjectReference Include="..\Pattern.Infrastructure\Pattern.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
   </ItemGroup>
 

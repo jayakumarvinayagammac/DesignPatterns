@@ -3,7 +3,8 @@ using Pattern.Domain.Shared;
 
 namespace Pattern.Application.Shipment.Commands
 {
-    public record CreateShipmentCommand(
-        CreateShipmentDto ShipmentDto
+    public record UpdateShipmentCommand(
+        int ShipmentId,
+        CreateShipmentDto Shipment
     ) : ICommand<Result<ShipmentResponse>>;
 }

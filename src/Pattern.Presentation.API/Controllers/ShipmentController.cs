@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Pattern.Application.Shipment.Commands;
 using MediatR;
-using Pattern.Domain.Common.Extensions;
+using Pattern.Application.Queries;
+using Pattern.Application.Shipment;
 namespace Pattern.Presentation.API.Controllers
 {
     [ApiController]
@@ -16,17 +17,19 @@ namespace Pattern.Presentation.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetShipments()
+        public async Task<IActionResult> GetShipments()
         {
             // Placeholder for fetching shipments
-            return Ok(new { Message = "List of shipments" });
+             var response = await _mediator.Send(new CollectionShipmentQuery());
+            return response.IsSuccess ? Ok(response.Value) : BadRequest(response.Error);            
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetShipmentById(int id)
+        public async Task<IActionResult> GetShipmentById(int id)
         {
             // Placeholder for fetching a shipment by ID
-            return Ok(new { Message = $"Shipment details for ID {id}" });
+            var response = await _mediator.Send(new GetShipmentQuery(id));
+            return response.IsSuccess ? Ok(response.Value) : BadRequest(response.Error);
         }
 
         [HttpPost]
@@ -35,26 +38,24 @@ namespace Pattern.Presentation.API.Controllers
         public async Task<IActionResult> CreateShipment([FromBody] CreateShipmentDto shipment)
         {
             // Placeholder for creating a new shipment
-            var result = await _mediator.Send(new CreateShipmentCommand(shipment));
-            return result.Match<IActionResult>(
-                () => Ok(new { Message = "Shipment created" }),
-                error => BadRequest(new { error.Code, error.Description })
-            );
-            
+            var response = await _mediator.Send(new CreateShipmentCommand(shipment));
+            return response.IsSuccess ? Ok(response.Value) : BadRequest(response.Error);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateShipment(int id, [FromBody] object shipment)
+        public async Task<IActionResult> UpdateShipment(int id, [FromBody] CreateShipmentDto shipment)
         {
             // Placeholder for updating a shipment
-            return NoContent();
+            var response = await _mediator.Send(new UpdateShipmentCommand(id, shipment));
+            return response.IsSuccess ? Ok(response.Value) : BadRequest(response.Error);            
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteShipment(int id)
+        public async Task<IActionResult> DeleteShipment(int id)
         {
             // Placeholder for deleting a shipment
-            return NoContent();
+            var response = await _mediator.Send(new DeleteShipmentCommand(id));
+            return response.IsSuccess ? Ok(response.Value) : BadRequest(response.Error);            
         }
     }
 }
