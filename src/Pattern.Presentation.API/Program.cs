@@ -20,7 +20,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(EcommerceMappingProfile).Assembly);
 
 // Add services to the container.
-builder.Services.AddShipmentServices();
+builder.Services
+.AddShipmentServices()
+.AddUserServices();
 // builder.Services.AddTransient<IRequestHandler<CreateShipmentCommand, Result<ShipmentResponse>>, CreateShipmentCommandHandler>();
 // builder.Services.AddTransient<IRequestHandler<CollectionShipmentQuery, Result<IEnumerable<ShipmentDto>>>, CollectionShipmentQueryHandler>();
 // builder.Services.AddTransient<IRequestHandler<GetShipmentQuery, Result<ShipmentDto>>, GetShipmentQueryHandler>();

@@ -301,3 +301,103 @@ INSERT INTO OrderDetails (OrderId, ProductId, Quantity, UnitPrice)
 VALUES 
 (3, 1, 1, 1200.00), -- 1 Laptop
 (3, 3, 1, 150.00);  -- 1 Headphones
+
+Shipment
+GET         : http://localhost:5234//api/Shipment
+GET         : http://localhost:5234//api/Shipment/{id}
+POST        : http://localhost:5234//api/Shipment
+PUT         : http://localhost:5234//api/Shipment/{id}
+DELETE      : http://localhost:5234//api/Shipment/{id}
+
+Shipment
+GET /api/Shipment
+Retrieve all shipments.
+GET /api/Shipment/{id}
+Retrieve a specific shipment by ID.
+POST /api/Shipment
+Create a new shipment.
+PUT /api/Shipment/{id}
+Update an existing shipment by ID.
+DELETE /api/Shipment/{id}
+Delete a shipment by ID.
+
+Order
+GET /api/Order
+Retrieve all orders.
+GET /api/Order/{id}
+Retrieve a specific order by ID.
+POST /api/Order
+Create a new order.
+PUT /api/Order/{id}
+Update an existing order by ID.
+DELETE /api/Order/{id}
+Delete an order by ID.
+
+ShipmentDetails
+GET /api/ShipmentDetails
+Retrieve all shipment details.
+GET /api/ShipmentDetails/{id}
+Retrieve specific shipment details by ID.
+POST /api/ShipmentDetails
+Create new shipment details.
+PUT /api/ShipmentDetails/{id}
+Update existing shipment details by ID.
+DELETE /api/ShipmentDetails/{id}
+Delete shipment details by ID.
+
+Product
+GET /api/Product
+Retrieve all products.
+GET /api/Product/{id}
+Retrieve a specific product by ID.
+POST /api/Product
+Create a new product.
+PUT /api/Product/{id}
+Update an existing product by ID.
+DELETE /api/Product/{id}
+Delete a product by ID.
+
+OrderDetails
+GET /api/OrderDetails
+Retrieve all order details.
+GET /api/OrderDetails/{id}
+Retrieve specific order details by ID.
+POST /api/OrderDetails
+Create new order details.
+PUT /api/OrderDetails/{id}
+Update existing order details by ID.
+DELETE /api/OrderDetails/{id}
+Delete order details by ID.
+
+User
+GET /api/User
+Retrieve all users.
+GET /api/User/{id}
+Retrieve a specific user by ID.
+POST /api/User
+Create a new user.
+PUT /api/User/{id}
+Update an existing user by ID.
+DELETE /api/User/{id}
+Delete a user by ID.
+
+
+GET /api/Shipment/{shipmentId}/Details
+Retrieve all shipment details for a specific shipment.
+
+GET /api/Shipment/{shipmentId}/Details/{detailId}
+Retrieve a specific shipment detail by ID for a specific shipment.
+
+POST /api/Shipment/{shipmentId}/Details
+Create new shipment details for a specific shipment.
+
+PUT /api/Shipment/{shipmentId}/Details/{detailId}
+Update existing shipment details by ID for a specific shipment.
+
+DELETE /api/Shipment/{shipmentId}/Details/{detailId}
+Delete shipment details by ID for a specific shipment.
+
+
+
+mkdir -p Product/Commands Product/Events Product/Queries
+touch Product/Commands/CreateProductCommand.cs
